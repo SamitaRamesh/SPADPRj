@@ -18,7 +18,7 @@ public class LibrarianDao {
             ps.setString(6, contact);
             status = ps.executeUpdate();
             con.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return status;
