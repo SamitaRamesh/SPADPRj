@@ -9,12 +9,12 @@ public class TransBookDao {
         boolean status = false;
         try {
             Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from Books where BookID=?");
+            java.sql.PreparedStatement ps = con.prepareStatement("select * from Books where BookID=?");
             ps.setString(1, bookcallno);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
             con.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
@@ -23,7 +23,7 @@ public class TransBookDao {
     public static boolean BookValidate(String BookID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from Books where BookID = ?");
+            java.sql.PreparedStatement ps = con.prepareStatement("select * from Books where BookID = ?");
             ps.setString(1, BookID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
@@ -37,7 +37,7 @@ public class TransBookDao {
     public static boolean UserValidate(String UserID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from Users where UserID = ?");
+            java.sql.PreparedStatement ps = con.prepareStatement("select * from Users where UserID = ?");
             ps.setString(1, UserID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
@@ -54,7 +54,7 @@ public class TransBookDao {
         try {
             Connection con = DB.getConnection();
 
-            PreparedStatement ps = con.prepareStatement("select quantity,issued from books where callno=?");
+            java.sql.PreparedStatement ps = con.prepareStatement("select quantity,issued from books where callno=?");
             ps.setString(1, bookcallno);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -63,7 +63,7 @@ public class TransBookDao {
             }
 
             if (quantity > 0) {
-                PreparedStatement ps2 = con.prepareStatement("update books set quantity=?,issued=? where callno=?");
+                java.sql.PreparedStatement ps2 = con.prepareStatement("update books set quantity=?,issued=? where callno=?");
                 ps2.setInt(1, quantity - 1);
                 ps2.setInt(2, issued + 1);
                 ps2.setString(3, bookcallno);
@@ -82,14 +82,14 @@ public class TransBookDao {
         try {
 
             Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("insert into IssuedBook values(?,?,?,?)");
+            java.sql.PreparedStatement ps = con.prepareStatement("insert into IssuedBook values(?,?,?,?)");
             ps.setInt(1, BookID);
             ps.setInt(2, UserID);
             ps.setString(3, IDate);
             ps.setString(4, RDate);
             status = ps.executeUpdate();
             con.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
@@ -100,12 +100,12 @@ public class TransBookDao {
         try {
 
             Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("delete from IssuedBook where BookID=? and UserID=?");
+            java.sql.PreparedStatement ps = con.prepareStatement("delete from IssuedBook where BookID=? and UserID=?");
             ps.setInt(1, BookID);
             ps.setInt(2, UserID);
             status = ps.executeUpdate();
             con.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
@@ -114,7 +114,7 @@ public class TransBookDao {
     public static boolean CheckIssuedBook(int BookID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from IssuedBook  where BookID=?");
+            java.sql.PreparedStatement ps = con.prepareStatement("select * from IssuedBook  where BookID=?");
             ps.setInt(1, BookID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
@@ -129,7 +129,7 @@ public class TransBookDao {
         boolean status = false;
         int num = 0;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from Book_Count UserID=?");
+            java.sql.PreparedStatement ps = con.prepareStatement("select * from Book_Count UserID=?");
             ps.setInt(2, UserID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();

@@ -9,7 +9,7 @@ public class LibrarianDao {
         try {
 
             Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("insert into librarian(name,password,email,address,city,contact) values(?,?,?,?,?,?)");
+            java.sql.PreparedStatement ps = con.prepareStatement("insert into librarian(name,password,email,address,city,contact) values(?,?,?,?,?,?)");
             ps.setString(1, name);
             ps.setString(2, password);
             ps.setString(3, email);
@@ -18,7 +18,7 @@ public class LibrarianDao {
             ps.setString(6, contact);
             status = ps.executeUpdate();
             con.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
@@ -28,11 +28,11 @@ public class LibrarianDao {
         int status = 0;
         try {
             Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("delete from Librarian where id=?");
+            java.sql.PreparedStatement ps = con.prepareStatement("delete from Librarian where id=?");
             ps.setInt(1, id);
             status = ps.executeUpdate();
             con.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
@@ -48,7 +48,7 @@ public class LibrarianDao {
           
             status = rs.next();
             con.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;

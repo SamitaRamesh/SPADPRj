@@ -4,6 +4,8 @@
  */
 package mainlibrary;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Samita
@@ -23,6 +25,14 @@ class PreparedStatement {
     }
 
     void setString(int i, int year) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setInt(int i, int UserID) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    ResultSet executeQuery() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
