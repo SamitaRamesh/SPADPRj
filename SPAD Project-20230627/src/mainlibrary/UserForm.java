@@ -257,16 +257,7 @@ public class UserForm extends javax.swing.JFrame {
 
             User user = new User(userName, password, position, email, program, year);
             String sql = " INSERT INTO users (username, password, position, email, program, year) VALUES (?, ?, ?, ?, ?, ?)" ;
-            try (PreparedStatement statement = connection.prepareStatement(sql))
-                statement.setString(1, userName);
-                statement.setString(2, password);
-                statement.setString(3, position);
-                statement.setString(4, email);
-                statement.setString(5, program);
-                statement.setString(year);
-                
-                statement.executeUpdate();
-            } catch (SQLException e)
+            
             {
                 JOptionPane.showMessageDialog(UserForm.this, "User is Added Successfully!", "Adding New User!", JOptionPane.ERROR_MESSAGE);
                 

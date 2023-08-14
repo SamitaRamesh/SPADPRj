@@ -25,7 +25,8 @@ public class DB {
             Properties props = new Properties();
             props.put("user", user);
      //change the password to the password  ↓↓↓↓↓↓↓↓↓↓↓   you enteredwhen setting up mysql
-            props.put("password", "Samita");
+            props.put("password", "user");
+            Object put = props.put("password", "");
             props.put("useUnicode", "true");
             props.put("useServerPrepStmts", "false"); // use client-side prepared statement
             props.put("characterEncoding", "UTF-8"); // ensure charset is utf8 here

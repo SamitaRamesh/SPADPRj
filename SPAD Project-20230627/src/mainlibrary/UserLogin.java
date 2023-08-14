@@ -6,6 +6,7 @@
 package mainlibrary;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -160,12 +161,17 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String User;
-        User = username.getText();
-        String Pass = String.valueOf(password.getPassword());
-        System.out.println(User + " " + Pass);
+        String User = this.username.getText();
+  
+        String Pass = String.valueOf(this.password.getPassword());
+         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+         String hashedPassword = passwordEncoder.encode(password); 
+         
+         Pass = String.valueOf(password.getPassword());
+         System.out.println(User + " " + Pass);
         UsersDao.validate(User, Pass);
-        if (UsersDao.validate(User, Pass)) {
+      
+        if (UsersDao.validate(username, Pass)) {
             this.dispose();
             UserLoginSuccess.main(new String[]{User, Pass});
 
@@ -224,4 +230,14 @@ public class UserLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
+
+    private static class BCryptPasswordEncoder {
+
+        public BCryptPasswordEncoder() {
+        }
+
+        private String encode(JPasswordField password) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
 }

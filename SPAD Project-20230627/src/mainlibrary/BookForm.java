@@ -5,6 +5,7 @@
  */
 package mainlibrary;
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import static mainlibrary.LibrarianSuccess.ThisLogined;
 
@@ -208,6 +209,7 @@ public class BookForm extends javax.swing.JFrame {
 
     private void BookNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookNameActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_BookNameActionPerformed
 
     private void PublisherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PublisherActionPerformed
@@ -234,7 +236,7 @@ public class BookForm extends javax.swing.JFrame {
 
     @SuppressWarnings({"empty-/*statement*/", "empty-statement"})
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:                                        
         String BookN = BookName.getText();
         String AuthorN = Author.getText();
         String PublisherN = Publisher.getText();
@@ -260,7 +262,7 @@ public class BookForm extends javax.swing.JFrame {
             Genre.setText("");
         } else {
             JOptionPane.showMessageDialog(BookForm.this, "The Book is not added!", "Adding Book Error!", JOptionPane.ERROR_MESSAGE);
-        }
+    }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

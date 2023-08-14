@@ -166,6 +166,8 @@ public class LibrarianLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Uname;
         Uname = username.getText();
+         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+         String hashedPassword = passwordEncoder.encode(password); 
         String Pass;
         Pass = String.valueOf(password.getPassword());
         System.out.println(Uname + " " + Pass);
